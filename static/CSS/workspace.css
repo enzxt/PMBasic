@@ -1,0 +1,188 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1E201E;
+    color: white;
+    padding: 10px;
+}
+
+#tabList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+#tabList li {
+    background-color: #444;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#tabList li.active {
+    background-color: #666;
+}
+
+.add-tab {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-tab:hover {
+    background-color: #777;
+}
+
+#tabContentContainer {
+    padding: 20px;
+    border-top: 1px solid #ccc;
+}
+
+.tabContent {
+    display: none;
+    min-height: 75vh;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #3C3D37;
+}
+
+.tabContent.active {
+    display: block;
+}
+
+
+/* modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+}
+
+.modal-content {
+    background-color: #3C3D37;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 2px solid #ECDFCC;
+    width: 30%; /* Could be more or less, depending on screen size */
+    border-radius: 10px;
+}
+
+.modal-content button {
+    background-color: #697565;
+    color: #ECDFCC;
+    border: 1px solid #ECDFCC ;
+}
+
+.content-option {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    background-color: #333;
+    color: #ECDFCC;
+    border: 1px solid #ECDFCC;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.content-option:hover {
+    background-color: #555;
+}
+
+/* x button */
+.tab-item {
+    position: relative;
+    padding-right: 25px; /* Space for the close button */
+    background-color: black;
+}
+
+.tab-item .close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2px 5px;
+    font-size: 12px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    display: none; /* Hidden by default */
+}
+
+.tab-item:hover .close-btn {
+    display: inline; /* Show the close button on hover */
+}
+
+/* Tutorial */
+.tutorial {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 18px;
+    color: #555;
+}
+
+.tutorial h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.tutorial p {
+    font-size: 18px;
+}
+
+
+#projectNameDisplay {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-size: 16px;
+    color: #ECDFCC;
+    padding-left: 10px;
+    justify-content: flex-start;
+}
+
+
+.project-item {
+    position: relative;
+    padding-right: 60px; /* Adjust according to the width of the buttons */
+}
+
+.delete-btn, .upload-btn {
+    position: absolute;
+    right: 40px; /* Position for the upload button */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: none; /* Hide by default */
+}
+
+.upload-btn {
+    right: 20px; /* Adjust position to the left of the delete button */
+}
+
+.project-item:hover .delete-btn,
+.project-item:hover .upload-btn {
+    display: inline-block; /* Show on hover */
+}

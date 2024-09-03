@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1E201E;
+    color: #ECDFCC;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.modal-button {
+    width: 20%;
+    height: 20%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Container that centers everything on the page */
+.home-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Styling for the Welcome text */
+.home-center-text {
+    margin-bottom: 2vh; /* Space between text and card */
+    font-size: 2.5rem; /* Make the text more prominent */
+}
+
+/* Main square card styling */
+.home-page-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 5%; /* Space between the small squares */
+    height: 40vw; /* Adjusting height relative to the viewport width */
+    width: 40vw;  /* Adjusting width relative to the viewport width */
+    max-height: 400px; /* Max size for large screens */
+    max-width: 400px;
+    /* background-color: #3C3D37; */
+    border-radius: 10px; /* Rounded corners */
+    padding: 1%;
+}
+
+/* Small square inside the main square card */
+.small-square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    font-size: 2rem; /* Adjust font size as needed */
+    font-weight: 600;
+}
+
+/* Hover effect for small squares */
+.small-square:hover {
+    background-color: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .home-page-card {
+        height: 50vw; /* Increase size on smaller screens */
+        width: 50vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-page-card {
+        height: 70vw; /* Further increase size on very small screens */
+        width: 70vw;
+    }
+}
+
+
+/* save button */
+.positioned-button {
+    position: fixed;
+    padding: 10px 20px;
+    background-color: #3C3D37; /* Button color */
+    color: #ECDFCC;   /* Text color */
+    border: 1px solid #ECDFCC;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;  /* Ensure it stays on top of other elements */
+}
+
+.positioned-button:hover {
+    background-color: #697565; /* Darker shade on hover */
+}
+
+#saveProject {
+    bottom: 10px;
+    right: 10px;
+}       
+
+#otherProjects {
+    bottom: 10px;
+    right: 100px;
+}
+
+#homeButton {
+    bottom: 10px;
+    right: 210px;
+}
+
+.backButton {
+    position: fixed;
+    padding: 10px 20px;
+    background-color: #3C3D37; /* Button color */
+    color: #ECDFCC;   /* Text color */
+    border: 1px solid #ECDFCC;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    bottom: 10px;
+    right: 10px;
+}
+
+.backButton:hover {
+    background-color: #697565; /* Darker shade on hover */
+}

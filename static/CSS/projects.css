@@ -1,0 +1,73 @@
+.projects-container {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    min-height: 100vh; /* Make sure the container takes up the full height of the viewport */
+    text-align: center;
+}
+
+#projectsList {
+    list-style-type: none; /* Remove bullets from list items */
+    padding: 0;
+}
+
+#projectsList li {
+    position: relative;
+    margin: 10px 0;
+    padding-left: 25px; /* Make space for the "X" mark */
+}
+
+#projectsList li .delete-btn {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+    color: red;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Add this for the upload button */
+#projectsList li .upload-btn {
+    position: absolute;
+    right: 0;
+    top: 45%;
+    transform: translateY(-50%);
+    display: none;
+    color: green; /* Change this color if needed */
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#projectsList li:hover .delete-btn,
+#projectsList li:hover .upload-btn {
+    display: inline; /* Show the buttons on hover */
+}
+
+#projectsList li a {
+    text-decoration: none;
+    color: #ECDFCC;
+    font-size: 18px;
+
+}
+
+.newbutton {
+    position: fixed;
+    padding: 10px 20px;
+    background-color: #3C3D37; /* Button color */
+    color: #ECDFCC;   /* Text color */
+    border: 1px solid #ECDFCC;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    right: 100px;
+    bottom: 10px; /* Add this to place the button vertically */
+}
+
+.newbutton:hover {
+    background-color: #697565;
+}
+

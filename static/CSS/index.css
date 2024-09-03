@@ -1,0 +1,56 @@
+/* Simple styling for the login box */
+.login-box {
+    width: 300px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #3C3D37;
+    border: 1px solid #ECDFCC;
+    text-align: center;
+    box-shadow: 0px 0px 10px 0px #000;
+    border-radius: 10px;
+}
+.login-box input[type="text"], .login-box input[type="password"] {
+    border: none;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #ECDFCC;
+    padding: 10px 10px;
+    width: 80%;
+    outline: none;
+    color: #ECDFCC;
+    border-radius: 5px;
+    transition: 0.25s;
+}
+.login-box input[type="text"]:focus, .login-box input[type="password"]:focus {
+    width: 90%;
+    border-color: #2ecc71;
+}
+.login-box input[type="submit"] {
+    border: none;
+    background: #ECDFCC;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #ECDFCC;
+    padding: 10px 10px;
+    width: 80%;
+    outline: none;
+    color: #333;
+    border-radius: 5px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+.login-box input[type="submit"]:hover {
+    background: #3498db;
+    border-color: #3498db;
+}
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}

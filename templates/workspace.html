@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customizable Navbar with Editable Tabs</title>
+    <link rel="stylesheet" href="../static/CSS/global.css">
+    <link rel="stylesheet" href="../static/CSS/workspace.css">
+</head>
+<body>
+    <div class="navbar">
+        <div>
+            <ul id="tabList">
+                <!-- Tabs will be dynamically added here -->
+            </ul>
+        </div>
+        <div>
+            <button id="addTabButton" class="add-tab">+</button>
+        </div>
+    </div>
+
+    <div id="tabContentContainer">
+        <!-- Editable content areas for each tab will be dynamically added here -->
+    </div>
+
+    <div id="tutorialSection" class="tutorial">
+        <h2>Welcome to Your Workspace!</h2>
+        <p>To get started, click the "+" button to create your first tab.</p>
+        <p>Rename a tab by double clicking it</p>
+        <p>Delete a tab by hovering and clicking [x]</p>
+    </div>
+
+    <div id="deleteConfirmModal" class="modal">
+        <div class="modal-content">
+            <h3>Confirm Deletion</h3>
+            <p>This tab contains content. Are you sure you want to delete it?</p>
+            <button id="confirmDeleteButton" class="modal-button">Delete</button>
+            <button id="cancelDeleteButton" class="modal-button">Cancel</button>
+        </div>
+    </div>
+    
+    <span id="saveProject" class="positioned-button">Save</span>
+    <span id="otherProjects" class="positioned-button">Projects</span>
+    <a href="new.html" id="homeButton" class="positioned-button">New</a>
+
+    <div id="projectNameDisplay">   
+        <p>Project Id: </p>
+    </div>
+    <script>
+        // workspace.js
+
+// Function to update the project name display
+function updateProjectNameDisplay() {
+    const projectName = localStorage.getItem('projectName');
+    const projectNameDisplay = document.getElementById('projectNameDisplay');
+
+    if (projectName) {
+        projectNameDisplay.textContent = `Proj Id: ${projectName}`;
+    } else {
+        projectNameDisplay.textContent = 'Proj Id: Unknown';
+    }
+}
+
+// Save the project to localStorage
+function saveProject() {
+    const tabs = [];
+    document.querySelectorAll('#tabList .tab-item').forEach(tab => {
+        const tabId = tab.id;
+        const contentId = `tabContent-${tabId.replace('tab-', '')}`;
+        const content = document.getElementById(contentId).innerHTML;
+
+        tabs.push({
+            id: tabId,
+            name: tab.textContent.replace("×", "").trim(), // Remove close button text
+            contentId: contentId,
+            content: content
+        });
+    });
+
+    const projectName = localStorage.getItem('projectName');
+    const saveButton = document.getElementById('saveProject');
+
+    if (projectName) {
+        localStorage.setItem(`project-${projectName}`, JSON.stringify(tabs));
+        console.log('Project saved successfully!');
+        saveButton.style.backgroundColor = 'green'; // Change button color to green
+        updateProjectNameDisplay(); // Update project name display
+    } else {
+        console.error('Project name not found in localStorage.');
+        saveButton.style.backgroundColor = 'red'; // Change button color to red
+    }
+
+    // Reset the button color after a short delay
+    setTimeout(() => {
+        saveButton.style.backgroundColor = ''; // Reset to original color
+    }, 2000); // Reset after 2 seconds
+}
+
+// Load project from localStorage
+function loadProject(projectName) {
+    const savedTabs = JSON.parse(localStorage.getItem(`project-${projectName}`));
+    
+    if (savedTabs) {
+        savedTabs.forEach(tab => {
+            addTabFromLoad(tab.id, tab.name, tab.content);
+        });
+    }
+}
+
+// Event listeners for project-related actions
+document.addEventListener('DOMContentLoaded', function() {
+    updateProjectNameDisplay();
+    document.getElementById('saveProject').addEventListener('click', saveProject);
+
+    const savedProjectsButton = document.getElementById('otherProjects');
+    if (savedProjectsButton) {
+        savedProjectsButton.addEventListener('click', function() {
+            window.location.href = 'projects.html';
+        });
+    } else {
+        console.error('The element with id "savedProjects" was not found.');
+    }
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const projectName = localStorage.getItem('projectName');
+    if (projectName) {
+        loadProject(projectName);
+    }
+});
+
+
+    </script>
+    <script src="../static/JS/script.js" defer></script>
+
+</body>
+</html>

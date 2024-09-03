@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Project</title>
+    <link rel="stylesheet" href="../static/CSS/global.css">
+    <link rel="stylesheet" href="../static/CSS/new.css">
+</head>
+<body>
+    <form id="myForm" action="workspace.html" method="GET">
+        <label for="name"><h1>Project Name:</h1></label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="description"><h1>Description:</h1></label>
+        <input type="text" id="description" name="description"><br><br>
+
+        <label for="date"><h1>Date:</h1></label>
+        <input type="date" id="date" name="date"><br><br>
+
+        <label for="duedate"><h1>Due Date:</h1></label>
+        <input type="date" id="duedate" name="duedate"><br><br>
+
+        <label for="sprintlength"><h1>Sprint Length (days):</h1></label>
+        <input type="number" id="sprintlength" name="sprintlength"><br><br>
+
+        <button type="submit">Create Workspace</button>
+    </form>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Get the values from the form inputs
+            const projectName = document.getElementById('name').value;
+            const projectDescription = document.getElementById('description').value;
+            const projectDate = document.getElementById('date').value;
+            const projectDueDate = document.getElementById('duedate').value;
+            const sprintLength = document.getElementById('sprintlength').value;
+
+            // Save the values to localStorage
+            localStorage.setItem('projectName', projectName);
+            localStorage.setItem('projectDescription', projectDescription);
+            localStorage.setItem('projectDate', projectDate);
+            localStorage.setItem('projectDueDate', projectDueDate);
+            localStorage.setItem('sprintLength', sprintLength);
+
+            // Redirect to the workspace page
+            window.location.href = 'workspace.html';
+        });
+    </script>
+
+    <span class="backButton" onclick="window.history.back()">Back</span>
+
+</body>
+</html>

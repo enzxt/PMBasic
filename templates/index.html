@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Manager</title>
+    <link rel="stylesheet" href="../static/CSS/global.css">
+    <link rel="stylesheet" href="../static/CSS/index.css">
+</head>
+<body>
+    <div class="login-box">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+            <div class="error-message" id="errorMessage"></div>
+        </form>
+    </div>
+    <script>
+            document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting the default way
+
+        // Hardcoded credentials
+        const hardcodedUsername = 'enzo';
+        const hardcodedPassword = 't';
+
+        // Get the entered username and password
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Check if the entered credentials match the hardcoded ones
+        if (username === hardcodedUsername && password === hardcodedPassword) {
+            // Redirect to workspace.html upon successful login
+            window.location.href = 'workspace.html';
+        } else {
+            // Display an error message
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = 'Invalid username or password';
+        }
+    });
+    </script>
+    <script src="../static/JS/script.js"></script>
+
+</body>
+</html>

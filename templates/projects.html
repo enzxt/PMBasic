@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Projects</title>
+    <link rel="stylesheet" href="../static/CSS/global.css">
+    <link rel="stylesheet" href="../static/CSS/projects.css">
+</head>
+<body>
+
+    <div class="projects-container">
+        <div><h1>Saved Projects</h1></div>
+        <ul id="projectsList">
+            <!-- Saved projects will be dynamically added here -->
+        </ul>
+    </div>
+    <script src="../static/JS/script.js"></script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectNameDisplay = document.getElementById('projectNameDisplay');
+            const currentProjectName = localStorage.getItem('projectName');
+        
+            if (projectNameDisplay && currentProjectName) {
+                projectNameDisplay.textContent = `Proj Id: ${currentProjectName}`;
+            }
+        
+            const projectsList = document.getElementById('projectsList');
+            const savedProjects = Object.keys(localStorage).filter(key => key.startsWith('project-'));
+        
+            if (savedProjects.length === 0) {
+                projectsList.innerHTML = "<li>No saved projects available.</li>";
+            } else {
+                savedProjects.forEach(projectKey => {
+                    const projectName = projectKey.replace('project-', '');
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('project-item'); // Add class for styling
+        
+                    // Create the delete button (x)
+                    const deleteBtn = document.createElement('span');
+                    deleteBtn.textContent = '×'; // Unicode for "X"
+                    deleteBtn.classList.add('delete-btn');
+        
+                    deleteBtn.addEventListener('click', function(event) {
+                        event.preventDefault(); // Prevent navigation on click
+                        event.stopPropagation(); // Prevent other click handlers
+        
+                        if (confirm(`Are you sure you want to delete the project "${projectName}"?`)) {
+                            localStorage.removeItem(projectKey);
+                            listItem.remove(); // Remove the list item from the DOM
+                        }
+                    });
+
+        
+                    const link = document.createElement('a');
+                    link.textContent = projectName;
+                    link.href = `workspace.html?project=${projectName}`; // Link to open the project in the workspace
+        
+                    // Update the project name display when clicking on a project
+                    link.addEventListener('click', function() {
+                        localStorage.setItem('projectName', projectName);
+                        projectNameDisplay.textContent = `Proj Id: ${projectName}`;
+                    });
+        
+                    listItem.appendChild(deleteBtn); // Add delete button to the list item (left side)
+                    listItem.appendChild(link); // Add the project link to the list item (center)
+                    projectsList.appendChild(listItem); // Append the list item to the projects list
+                });
+            }
+        });
+        </script>
+        
+    <span class="backButton" onclick="window.history.back()">Back</span>
+    <span class="newbutton"><a href="new.html">New</a></span>
+    <!-- <script src="../static/JS/parse.js"></script> -->
+
+</body>
+</html>
